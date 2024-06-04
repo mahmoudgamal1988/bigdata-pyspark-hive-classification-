@@ -1,0 +1,34 @@
+-- Example adjustments for PostgreSQL compatibility
+
+-- Example for creating a table
+CREATE TABLE IF NOT EXISTS "VERSION" (
+  "SCHEMA_VERSION" VARCHAR(20) NOT NULL
+);
+
+-- Additional example table creation
+CREATE TABLE IF NOT EXISTS "DBS" (
+  "DB_ID" BIGSERIAL NOT NULL,
+  "DESC" VARCHAR(4000),
+  "DB_LOCATION_URI" VARCHAR(4000),
+  "NAME" VARCHAR(128) NOT NULL,
+  PRIMARY KEY ("DB_ID")
+);
+
+-- Add definitions for other necessary tables
+CREATE TABLE IF NOT EXISTS "TBLS" (
+  "TBL_ID" BIGSERIAL NOT NULL,
+  "CREATE_TIME" INTEGER,
+  "DB_ID" BIGINT NOT NULL,
+  "LAST_ACCESS_TIME" INTEGER,
+  "OWNER" VARCHAR(128),
+  "OWNER_TYPE" VARCHAR(10),
+  "RETENTION" INTEGER,
+  "SD_ID" BIGINT,
+  "TBL_NAME" VARCHAR(128) NOT NULL,
+  "TBL_TYPE" VARCHAR(128),
+  PRIMARY KEY ("TBL_ID"),
+  FOREIGN KEY ("DB_ID") REFERENCES "DBS" ("DB_ID"),
+  FOREIGN KEY ("SD_ID") REFERENCES "SDS" ("SD_ID")
+);
+
+-- Add the rest of your schema definitions here
