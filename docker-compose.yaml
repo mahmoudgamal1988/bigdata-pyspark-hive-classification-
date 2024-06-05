@@ -207,7 +207,7 @@ services:
       - 9000:9000
       - 8020:8020
     volumes:
-      - hadoop_namenode-vol:/hadoop/dfs/name
+      - hadoop_namenode-volume:/hadoop/dfs/name
     environment:
       CLUSTER_NAME: hadoop-cluster
       CORE_CONF_fs_defaultFS: hdfs://namenode:8020
@@ -215,9 +215,9 @@ services:
     networks:
       - hadoop
 
-  datanode:
+  datanode1:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    container_name: datanode
+    container_name: datanode1
     restart: always
     depends_on:
       - namenode
@@ -225,7 +225,63 @@ services:
       CORE_CONF_fs_defaultFS: hdfs://namenode:8020
       HDFS_CONF_dfs_datanode_data_dir: file:///hadoop/dfs/data
     volumes:
-      - hadoop_datanode-vol:/hadoop/dfs/data
+      - hadoop_datanode1-volume:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+  datanode2:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode2
+    restart: always
+    depends_on:
+      - namenode
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
+      HDFS_CONF_dfs_datanode_data_dir: file:///hadoop/dfs/data
+    volumes:
+      - hadoop_datanode2-volume:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+  datanode3:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode3
+    restart: always
+    depends_on:
+      - namenode
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
+      HDFS_CONF_dfs_datanode_data_dir: file:///hadoop/dfs/data
+    volumes:
+      - hadoop_datanode3-volume:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+  datanode4:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode4
+    restart: always
+    depends_on:
+      - namenode
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
+      HDFS_CONF_dfs_datanode_data_dir: file:///hadoop/dfs/data
+    volumes:
+      - hadoop_datanode4-volume:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+  datanode5:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode5
+    restart: always
+    depends_on:
+      - namenode
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:8020
+      HDFS_CONF_dfs_datanode_data_dir: file:///hadoop/dfs/data
+    volumes:
+      - hadoop_datanode5-volume:/hadoop/dfs/data
     networks:
       - hadoop
 
@@ -349,5 +405,10 @@ networks:
     driver: bridge
 
 volumes:
-  hadoop_namenode-vol:
-  hadoop_datanode-vol:
+  hadoop_namenode-volume:
+  hadoop_datanode1-volume:
+  hadoop_datanode2-volume:
+  hadoop_datanode3-volume:
+  hadoop_datanode4-volume:
+  hadoop_datanode5-volume:
+
