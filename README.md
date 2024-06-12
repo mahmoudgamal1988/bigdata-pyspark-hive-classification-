@@ -1,5 +1,19 @@
 # Hadoop Cluster with Hive Integration and Spark Machine Learning
 
+## Contributers
+
+1- Mahmoud Gamal Ahmed Mostafa
+
+2- Mohamed Gamal Tawfik Mohamed
+
+3- Mohamed Abd El-Rady Korashy
+
+4. Ahmed Said Ahmed Ali Abo Hekal
+   
+5. Ibrahim abdelmonem hussien
+   
+6. Omar Mostafa Abdelmonem
+
 ## Overview
 This project sets up a Hadoop cluster using Docker Compose, integrates Hive for data warehousing, and leverages Spark for machine learning tasks. The cluster consists of a NameNode, multiple DataNodes, ResourceManager, NodeManager, HistoryServer, Postgres database for Hive metastore, Hive metastore and server, and Spark for machine learning.
 
